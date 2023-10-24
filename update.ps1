@@ -41,8 +41,8 @@ function global:au_GetLatest {
   $rest64   = Invoke-RestMethod $releases64 -UseBasicParsing
   $rest7864 = Invoke-RestMethod $releases7864 -UseBasicParsing
   $version  = $rest64.IDS[0].downloadInfo.Version
-  $url64    = $rest64.IDS[0].downloadInfo.DownloadURL
-  $url7864  = $rest7864.IDS[0].downloadInfo.DownloadURL
+  $url64    = "http"+$rest64.IDS[0].downloadInfo.DownloadURL.Substring(5)
+  $url7864  = "http"+$rest7864.IDS[0].downloadInfo.DownloadURL.Substring(5)
 
   return @{
     Version = $version
