@@ -51,6 +51,6 @@ function global:au_GetLatest {
   }
 }
 
-if ($MyInvocation.InvocationName -ne '.') { # run the update only if script is not sourced
-  Update-Package -ChecksumFor none
-}
+$au_Push      = $false 
+
+Update-Package -ChecksumFor none -NoCheckChocoVersion -Force
