@@ -19,26 +19,7 @@ function global:au_SearchReplace {
   }
 }
 
-function global:au_BeforeUpdate {
-  $Latest.ChecksumType64 = "sha256"
-  $Latest.Checksum64     = Get-RemoteChecksum -Url $Latest.URL64
-  $Latest.Checksum7864   = Get-RemoteChecksum -Url $Latest.URL7864
-  # export checksums for use with other package
-  sc ..\knownChecksums "$Latest.Checksum64`n$Latest.Checksum7864"
-}
-
 function global:au_GetLatest {
-  # check for presence of exported checksums from other package
-  if (Test-Path ..\knownChecksums) {
-    # overwrite function with known checksums
-    function global:au_BeforeUpdate {
-      $knownChecksums = gc ..\knownChecksums
-      $Latest.ChecksumType64 = "sha256"
-      $Latest.Checksum64     = $knownChecksums[0]
-      $Latest.Checksum7864   = $knownChecksums[1]
-      rm ..\knownChecksums
-    }
-  }
   $rest64   = Invoke-RestMethod $releases64 -UseBasicParsing
   $rest7864 = Invoke-RestMethod $releases7864 -UseBasicParsing
   $version  = $rest64.IDS[0].downloadInfo.Version
