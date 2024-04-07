@@ -4,8 +4,8 @@ $packageArgs = @{
   packageName    = 'nvidia-display-driver'
   destination    = "${ENV:TEMP}\nvidiadriver" # Folder to extract drivers
   url64          = 'http://us.download.nvidia.com/Windows/552.12/552.12-desktop-win10-win11-64bit-international-dch-whql.exe'
-  checksum64     = '6cbe745647cd37b89a05e7c289b095378649fbd0baa808d377faf1f13842890b'
-  checksumType64 = 'sha256'
+  checksum64     = ''
+  checksumType64 = ''
   silentArgs     = '-s -noreboot'
   validExitCodes = @(0,1)
   softwareName   = 'NVIDIA Graphics Driver*'
@@ -13,7 +13,7 @@ $packageArgs = @{
 
 If ( [System.Environment]::OSVersion.Version.Major -ne '10' ) {
   $packageArgs['url64']      = 'http://us.download.nvidia.com/Windows/474.89/474.89-desktop-win8-win7-64bit-international.exe'
-  $packageArgs['checksum64'] = 'd2232f0aae2fc0d2c02b625ef5cf58241d70ff943b2bb88e3d197120cff936cf'
+  $packageArgs['checksum64'] = ''
 }
 
 If ( -not (Get-OSArchitectureWidth -compare 64) ) {
