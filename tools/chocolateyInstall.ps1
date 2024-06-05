@@ -3,7 +3,7 @@ $ErrorActionPreference = 'Stop';
 $packageArgs = @{
   packageName    = 'nvidia-display-driver'
   destination    = "${ENV:TEMP}\nvidiadriver" # Folder to extract drivers
-  url64          = 'http://us.download.nvidia.com/Windows/555.85/555.85-desktop-win10-win11-64bit-international-dch-whql.exe'
+  url64          = 'http://us.download.nvidia.com/Windows/555.99/555.99-desktop-win10-win11-64bit-international-dch-whql.exe'
   checksum64     = ''
   checksumType64 = ''
   silentArgs     = '-s -noreboot'
@@ -12,7 +12,7 @@ $packageArgs = @{
 }
 
 If ( [System.Environment]::OSVersion.Version.Major -ne '10' ) {
-  $packageArgs['url64']      = 'http://us.download.nvidia.com/Windows/474.89/474.89-desktop-win8-win7-64bit-international.exe'
+  $packageArgs['url64']      = 'http://us.download.nvidia.com/Windows/475.06/475.06-desktop-win8-win7-64bit-international.exe'
   $packageArgs['checksum64'] = ''
 }
 
