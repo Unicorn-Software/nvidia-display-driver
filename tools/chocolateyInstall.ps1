@@ -12,7 +12,7 @@ $packageArgs = @{
 }
 
 If ( [System.Environment]::OSVersion.Version.Major -ne '10' ) {
-  $packageArgs['url64']      = 'http://us.download.nvidia.com/Windows/475.06/475.06-desktop-win8-win7-64bit-international.exe'
+  $packageArgs['url64']      = 'http://us.download.nvidia.com/Windows/475.14/475.14-desktop-win8-win7-64bit-international.exe'
   $packageArgs['checksum64'] = ''
 }
 
